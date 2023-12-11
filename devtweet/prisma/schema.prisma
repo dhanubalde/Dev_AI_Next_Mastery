@@ -1,42 +1,67 @@
-
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
   provider = "mongodb"
-  url      = env("DATABASE_URL")
+  url = env("DATABASE_URL")
+
 }
 
-model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  name           String?
-  email          String?   @unique
-  emailVerified  DateTime?
-  image          String?
-  hashedPassword String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-  favoriteIds    String[]  @db.ObjectId
-
-  accounts     Account[]
+model Category {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  companions    Companion[]
 }
 
-model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String  @db.ObjectId
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.String
-  access_token      String? @db.String
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.String
-  session_state     String?
+model Companion {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  userId        String @db.ObjectId
+  userName      String
+  src           String
+  name          String 
+  description   String
+  instructions  String 
+  seed          String 
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
-  @@unique([provider, providerAccountId])
+  category      Category @relation(fields: [categoryId], references: [id])
+  categoryId    String @db.ObjectId
+
+  messages      Message[]
+
+  @@index([categoryId])
+  @@fulltext([name])
+}
+
+enum Role {
+  user
+  system
+}
+
+model Message {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  role        Role   
+  content     String   
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  companionId String @db.ObjectId
+  userId      String
+
+  companion   Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
+  
+  @@index([companionId])
+}
+
+model UserSubscription {
+  id                        String @id @default(auto()) @map("_id") @db.ObjectId
+  userId                    String    @unique
+  stripeCustomerId          String?   @unique @map(name: "stripe_customer_id")
+  stripeSubscriptionId      String?   @unique @map(name: "stripe_subscription_id")
+  stripePriceId             String?   @map(name: "stripe_price_id")
+  stripeCurrentPeriodEnd    DateTime? @map(name: "stripe_current_period_end")
 }
