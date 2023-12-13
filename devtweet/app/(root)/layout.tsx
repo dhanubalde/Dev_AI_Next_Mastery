@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/navbar"
 import { Sidebar } from "@/components/sidebar"
+
 // import { checkSubscription } from "@/lib/subscription"
 
 
@@ -19,7 +20,9 @@ const RootLayout = async ({
         <Sidebar isPro={false} />
       </div>
       <main className="md:pl-20 pt-16 h-full">
+      
         {children}
+      
       </main>
     </div>
   )

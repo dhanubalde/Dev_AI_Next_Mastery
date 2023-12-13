@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { useProModal } from "@/hooks/use-Prop-Modal"
 import Link from "next/link"
 import { UserButton } from "@clerk/nextjs"
-
+import { ModeToggle } from "@/components/ui/mode-toggle"
 
 const font = Poppins({
   weight: "600", subsets: ["latin"]
@@ -38,15 +38,15 @@ const Navbar: React.FC<NavbarProps> = ({
         </Link>   
       </div>
 
-      <div className="flex items-center gap-x-3">
-        {!isPro && (
+      <div className="flex items-center gap-x-5">
+       
           <Button onClick={proModal.onOpen}
-            size="sm">
+            size="sm" variant="premium">
             Upgrade
             <Sparkles className=" h- w-4 fill-white text-white ml-2"/>
           </Button>
-        )}
       
+          <ModeToggle/>
         <UserButton afterSignOutUrl="/sign-in"/>
       </div>
     </div>

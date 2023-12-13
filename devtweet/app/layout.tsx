@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
-
+import { ThemeProvider } from "@/components/ui/theme-provider"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -17,9 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+        <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+          </ThemeProvider>
       </body>
       </html>
     </ClerkProvider>
