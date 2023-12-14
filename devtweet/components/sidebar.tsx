@@ -18,9 +18,9 @@ export const Sidebar = ({
   const pathname = usePathname();
 
   const onNavigate = (url: string, pro: boolean) => {
-    if (pro && !isPro) {
-      return proModal.onOpen();
-    }
+    // if (pro && !isPro) {
+    //   return proModal.onOpen();
+    // }
 
     return router.push(url);
   }

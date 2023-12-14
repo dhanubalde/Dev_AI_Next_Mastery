@@ -1,12 +1,18 @@
-import React from 'react'
-import { UserButton } from "@clerk/nextjs";
+import Categories from "@/components/categories";
+import SearchInput from "@/components/search-input";
+import prismadb from "@/lib/prismadb";
 
-const RootPage = () => {
+
+const RootPage = async () => {
+
+  const categories = await prismadb.category.findMany()
+
   return (
-    <div>
-      Card List Item
+    <div className=" h-full p-4">
+      <SearchInput />
+      <Categories data={categories} />
     </div>
-  )
-}
+  );
+};
 
-export default RootPage     
+export default RootPage;
