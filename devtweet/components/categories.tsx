@@ -25,7 +25,7 @@ const Categories: React.FC<CategoriesProps> = ({
         url: window.location.href,
         query: query,
       },
-      { skipEmptyString: true, skipNull: true })
+      { skipNull: true })
     router.push(url)
   }
 
