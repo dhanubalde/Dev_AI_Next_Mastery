@@ -1,32 +1,31 @@
-
 import prismadb from "@/lib/prismadb";
-import Companionform from "./components/companion-form";
+import CompanionForm from "./components/companion-form";
 
 
 
-interface CompanionIdPageProps { 
+interface CompanionProps {
   params: {
-    companionId: string
+    companionId: string;
   }
-   
+};
 
-}
-const CompanionIdPage = async ({ params}: CompanionIdPageProps) => {
-    
+
+const page = async ({ params }: CompanionProps) => {
+ 
   const companion = await prismadb.companion.findUnique({
     where: {
-      id: params.companionId
+      id: params.companionId,
     }
-  })
+  }) 
 
   const categories = await prismadb.category.findMany();
   
   return (
-    <Companionform
+    <CompanionForm
       initialData={companion}
-      categories={ categories}
+      categories={categories}
     />
   )
 }
 
-export default CompanionIdPage
+export default page
