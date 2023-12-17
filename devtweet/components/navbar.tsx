@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </Button>
       
           <ModeToggle/>
-        <UserButton afterSignOutUrl="/sign-in"/>
+        <UserButton afterSignOutUrl="/"/>
       </div>
     </div>
   )
