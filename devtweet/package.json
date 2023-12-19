@@ -26,6 +26,7 @@
     "@radix-ui/react-toggle": "^1.0.3",
     "@types/bcrypt": "^5.0.2",
     "@vercel/postgres": "^0.5.1",
+    "ai": "^2.2.29",
     "axios": "^1.6.2",
     "bcrypt": "^5.1.1",
     "bson": "^6.2.0",

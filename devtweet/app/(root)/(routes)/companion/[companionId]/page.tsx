@@ -24,6 +24,7 @@ const page = async ({ params }: CompanionProps) => {
   const companion = await prismadb.companion.findUnique({
     where: {
       id: params.companionId,
+      userId
     }
   }) 
 
