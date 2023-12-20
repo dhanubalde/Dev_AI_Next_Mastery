@@ -111,7 +111,7 @@ export const CompanionForm = ({
             <div>
               <h3 className="text-lg font-medium">General Information</h3>
               <p className="text-sm text-muted-foreground">
-                General information about your Companion
+                General information about your Devcore
               </p>
             </div>
             <Separator className="bg-primary/10" />

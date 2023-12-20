@@ -4,6 +4,7 @@ import ChatHeader from "@/components/chatHeader";
 import { Companion, Message } from "@prisma/client"
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import ChatForm from "@/components/chatForm";
 
 interface ChatClientProps { 
   companion: Companion & {
@@ -41,7 +42,7 @@ const ChatClient = ({ companion }: ChatClientProps) => {
     },
   })
 
-  const omSubmit = (e: FormEvent<HTMLFormElement>) => { 
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => { 
     const userMessage = {
       role: "user",
       content: input
@@ -57,8 +58,14 @@ const ChatClient = ({ companion }: ChatClientProps) => {
       <div>
         Messages Todo
       </div>
+      <ChatForm
+        isLoading={isLoading}
+        input={input}
+        handleInputChange={handleInputChange}
+        onSubmit={onSubmit}
+      />
     </div>
   )
 }
-
+  
 export default ChatClient
