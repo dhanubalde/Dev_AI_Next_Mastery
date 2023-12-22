@@ -68,7 +68,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### Cloning the repository
 
 ```shell
-git clone 
+git clone https://github.com/dhanubalde/Dev_AI_Next_Mastery.git
 ```
 
 ### Install packages
