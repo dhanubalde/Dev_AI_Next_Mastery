@@ -20,7 +20,7 @@ Features:
 - How to fetch data in server react components by directly accessing database (WITHOUT API! like Magic!)
 - How to handle relations between Server and Child components!
 - How to reuse layouts
-- Folder structure in Next 13 App Router
+- Folder structure in Next 14 App Router
 
 
 
@@ -127,6 +127,10 @@ node scripts/seed.ts
 
 ```shell
 npm run dev
+```
+### start the Prisma Studio
+```shell
+npx prisma studio
 ```
 
 ## Available commands
