@@ -68,7 +68,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### Cloning the repository
 
 ```shell
-git clone https://github.com/AntonioErdeljac/next13-ai-saas.git
+git clone 
 ```
 
 ### Install packages
@@ -111,7 +111,7 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"
 
 ### Setup Prisma
 
-Add Posgresql Database (I user Docker Container to Dockerize my Database)
+Add Postgresql Database (I user Docker Container to Dockerize my Database)
 
 ```shell
 npx prisma db push
