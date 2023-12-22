@@ -5,6 +5,8 @@ import { Companion, Message } from "@prisma/client"
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import ChatForm from "@/components/chatForm";
+import ChatMessages from "@/components/chat-Messages";
+import { ChatMessageProps } from "@/components/chat-Message";
 
 interface ChatClientProps { 
   companion: Companion & {
@@ -19,7 +21,7 @@ interface ChatClientProps {
 const ChatClient = ({ companion }: ChatClientProps) => {
   
   const router = useRouter();
-  const [messages, setMessages] = useState<any[]>(companion.messages)
+  const [messages, setMessages] = useState<ChatMessageProps[]>(companion.messages)
   const {
     input,
     isLoading,
@@ -29,7 +31,7 @@ const ChatClient = ({ companion }: ChatClientProps) => {
   } = useCompletion({
     api: `/api/chat/${companion.id}`,
     onFinish(prompt, completion) {
-      const systemMessage = {
+      const systemMessage: ChatMessageProps = {
         role: "system",
         content: completion,
       };
@@ -43,7 +45,7 @@ const ChatClient = ({ companion }: ChatClientProps) => {
   })
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => { 
-    const userMessage = {
+    const userMessage: ChatMessageProps = {
       role: "user",
       content: input
     }
@@ -55,9 +57,11 @@ const ChatClient = ({ companion }: ChatClientProps) => {
   return (
     <div className="flex flex-col h-full p-4 space-y-4 text-lg">
       <ChatHeader companion={companion} />
-      <div>
-        Messages Todo
-      </div>
+      <ChatMessages
+        companion={companion}
+        isLoading={isLoading}
+        messages={messages}
+      />
       <ChatForm
         isLoading={isLoading}
         input={input}
