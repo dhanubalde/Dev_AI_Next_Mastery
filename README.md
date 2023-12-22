@@ -1,4 +1,4 @@
-# Build a SaaS AI Companion with Next.js 13, React, Tailwind, Prisma, Stripe | Full Tutorial 2023
+# Build a SaaS AI Devcore with Next.js 13, React, Tailwind, Prisma, Stripe | Full Tutorial 2023
 
 
 Features:
@@ -111,7 +111,7 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"
 
 ### Setup Prisma
 
-Add MySQL Database (I used PlanetScale)
+Add Posgresql Database (I user Docker Container to Dockerize my Database)
 
 ```shell
 npx prisma db push
