@@ -39,14 +39,14 @@ const Navbar: React.FC<NavbarProps> = ({
         </Link>   
       </div>
 
-      <div className="flex items-center gap-x-5">
-       
+      <div className="flex items-center gap-x-3">
+        { !isPro && (
           <Button onClick={proModal.onOpen}
             size="sm" variant="premium">
             Upgrade
             <Sparkles className=" h- w-4 fill-white text-white ml-2"/>
           </Button>
-      
+          )}
           <ModeToggle/>
         <UserButton afterSignOutUrl="/"/>
       </div>

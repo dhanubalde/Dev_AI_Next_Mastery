@@ -5,6 +5,7 @@ import './globals.css'
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui/toaster'
+import ProModal from '@/components/pro-modal'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -21,7 +22,8 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
         <body className={cn("bg-secondary",inter.className)}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ProModal  />
             {children}
             <Toaster/>
           </ThemeProvider>

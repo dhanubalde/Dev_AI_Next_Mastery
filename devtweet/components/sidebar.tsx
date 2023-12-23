@@ -18,9 +18,9 @@ export const Sidebar = ({
   const pathname = usePathname();
 
   const onNavigate = (url: string, pro: boolean) => {
-    // if (pro && !isPro) {
-    //   return proModal.onOpen();
-    // }
+    if (pro && !isPro) {
+      return proModal.onOpen();
+    }
 
     return router.push(url);
   }
@@ -45,6 +45,9 @@ export const Sidebar = ({
       pro: false,
     },
   ];
+
+
+  
 
   return (
     <div className="space-y-4 flex flex-col h-full text-primary bg-secondary">
